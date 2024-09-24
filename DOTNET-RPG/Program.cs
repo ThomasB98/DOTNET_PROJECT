@@ -1,4 +1,6 @@
-
+global using DOTNET_RPG.Models;
+global using DOTNET_RPG.Service.CharacterService;
+global using AutoMapper;
 namespace DOTNET_RPG
 {
     public class Program
@@ -13,6 +15,8 @@ namespace DOTNET_RPG
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddAutoMapper(typeof(Program).Assembly);
+            builder.Services.AddScoped<ICharacterService, CharacterServiceImpl>();
 
             var app = builder.Build();
 
